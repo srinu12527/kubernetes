@@ -1,0 +1,31 @@
+#!/bin/bash
+
+#This script will configure OpenVPN as a client
+
+echo "Starting OpenVPN client configuration..."
+
+echo "Please enter the server's IP address"
+read SERVER_IP
+
+echo "Please enter the port number"
+read PORT_NUMBER
+
+echo "Please enter the protocol type (udp/tcp)"
+read PROTOCOL
+
+echo "Please enter the OpenVPN configuration file (.ovpn)"
+read CONFIG_FILE
+
+echo "Please enter the username"
+read USERNAME
+
+echo "Please enter the password"
+read PASSWORD
+
+echo "Please enter your IP address"
+read IP_ADDRESS
+
+# Configure OpenVPN
+sudo openvpn --config $CONFIG_FILE --remote $SERVER_IP --port $PORT_NUMBER --proto $PROTOCOL --auth-user-pass $USERNAME $PASSWORD --ifconfig $IP_ADDRESS 255.255.255.0
+
+echo "OpenVPN client configuration complete!"
